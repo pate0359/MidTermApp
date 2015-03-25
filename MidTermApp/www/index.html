@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+<!--		<link href='http://fonts.googleapis.com/css?family=Karla|Merriweather+Sans:400,300' rel='stylesheet' type='text/css'>-->
+		<link href='http://fonts.googleapis.com/css?family=Mate|Flamenco' rel='stylesheet' type='text/css'>
+        
+		<title>Cordova Mobile</title>
+    </head>
+    <body>
+		
+        <nav class="navBar">
+<ul class="tabs">
+	<li class="tab"><a href="#home" data-role="pagelink" class="activetab"><object data="./img/home.svg" type="image/svg+xml" id="homeSVG" width="80%" height="80%"></object></a></li> 
+<!--	<span>Home</span>-->
+    
+	<li class="tab"><a href="#location" data-role="pagelink" class=""><object data="./img/location.svg" type="image/svg+xml" id="locationSVG" width="80%" height="80%"></object></a></li>
+    
+	<li class="tab"><a href="#contacts" data-role="pagelink" class=""><object data="./img/contacts.svg" type="image/svg+xml" id="contactsSVG" width="80%" height="80%"></object></a></li>
+</ul>
+</nav>
+				
+<div data-role="page" id="home" class="">
+  <div data-role="content">      
+    <h2>Welcome!</h2>
+    <p>This is the sample cordova application with two basic functionality GEOLOCATION API and CONTACT API.</p>
+	  <br>
+	  <h4>Geolocation API</h4>
+	  <p>Application will fetch user's current location, and will get the static map image using google static map API.It uses canvas to display image. Current location marker will be displayed on static map image. Make sure you allow permission to access your location, when application ask you, or application can not get your location neither static map image.</p>
+		 
+	  <h4>Contact API</h4>
+	  <p>Application will get user's phone contacts using Contact API and display as a list. Make sure you allow permission to access your contacts information, when application ask you, or application can not get your contacts list.</p>
+	  
+<!--
+	  <br><br>
+	  <p>The 300ms delay for touch events is eliminited in the application. Tab icon contactins SVG images. Application is using google fonts and monochromatic  color scheme.</p>
+-->
+  </div>
+</div>
+    
+<div data-role="page" id="location" class="hidden">
+  <div data-role="content">
+    <h3>My Location</h3>
+    <p id="locating">Geting you location...</p>
+	  <div class="mapDiv"></div>
+  </div>
+</div>
+
+<div data-role="page" id="contacts" class="hidden">
+  <div data-role="content">
+<!--    <h3>Contacts</h3>-->
+	  <p id="contactLoading">Syncing your contacts...</p>
+    <ul id="MyContacts">
+    </ul>
+  </div>
+</div>
+		
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/location.js"></script>
+		<script type="text/javascript" src="js/contacts.js"></script>
+    </body>
+</html>
