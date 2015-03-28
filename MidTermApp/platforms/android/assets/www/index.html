@@ -20,28 +20,18 @@
     <ul data-role="listview" id="MyContacts">
     </ul>
   	</section>
-		
-		 <div data-role="overlay">&nbsp;</div>
+	
+		<div data-role="overlay">&nbsp;</div>
   
   <div data-role="modal">
-    <h3>Modal Window Title</h3>
+    <h3 class="contactName">Modal Window Title</h3>
     <form>
+      <ul data-role="listview" id="phonenumber">
+		  <li>phone number1</li>
+		  <li>phone number2</li>
+    </ul>
       <div class="formBox">
-        <select name="list" id="list" class="lg">
-          <option value="1">First Value</option>
-          <option value="2">Second Value</option>
-          <option value="3" >Third Value</option>
-          <option value="4" >Fourth Value</option>
-          <option value="5">Fifth Value</option>
-          <option value="6">Sixth Value</option>
-        </select>
-      </div>
-      <div class="formBox">
-        <input type="text" id="txt" name="txt" class="lg" placeholder="Enter a value here please"/>
-      </div>
-      <div class="formBox">
-        <input type="button" id="btnCancel" value="Cancel" class="btn"/>
-        <input type="button" id="btnSave" value="Save" class="btn"/>
+        <input type="button" id="btnOk" value="Ok" class="btn"/>
       </div>
     </form>
   </div>
