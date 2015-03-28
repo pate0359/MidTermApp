@@ -1,193 +1,105 @@
+/*************************************
+        Defaults
+*************************************/
+
 *{
-	padding:0;
-	margin:0;	
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+  font-family:'Open Sans', sans-serif;
 }
-
-html{
-	width:100%;
-	height:100%;
-  overflow:hidden;
-	
-/*	Remove 300ms delay*/
-	-ms-touch-action: manipulation;
-   touch-action: manipulation;
+h2{
+  font-size:1.6rem;
+  padding:1rem 0;
 }
-h2, h3, h4, p{
-	padding:0.2rem 2rem;
-	font-family: 'Mate', serif;
+p{
+  font-size:1.0rem;
+  padding:1rem 0;
 }
-p, span{
-	font-family: 'Flamenco', cursive;
-}
-li
-{
-	font-family: 'Mate', serif;
-}
-
-h2
-{
-	text-align: center;
-}
-
-/********************************
-        STICKEY FOOTER
-********************************/
-
-body{
+.wrapper{
+  width:100%;
   height:100%;
 }
-[data-role="footer"]{
-  position:fixed;
-  width: 100%;
-  bottom: 0;
-  height: 2.5rem;
-/*	font-family: 'Karla', sans-serif;*/
-}
-
-/********************************
-        TABS
-********************************/
-
-nav{
-  height:3rem;
+/*************************************
+        Layout
+*************************************/
+[data-role=page]{
+  position:absolute;
+  z-index:5;
+  top:0;
+  left:0;
   width:100%;
-	
-	 position: fixed;  
-    width: 100%;  
-    left: 0;  
-    top: 0;  
-    z-index: 100;  
-    border-top: 2; 
-	border-bottom: 2;
-/*
-	border-bottom-color: white;
-	box-shadow: inset 0 -12px 12px 12px rgba(0,0,0,1);
-*/
-}
-
-ul.tabs{
-	width:100%;
-	/*margin-bottom:30px;*/
-/*	0093D4*/
-}
-.tabs li.tab{
-	background-color:#009FD4;
-	float:left; 
-	height:3rem;
-	display:inline-block;
-	width:33.3333%;
-}
-.tabs li.tab a{
-	display: block;
-	padding: 0.5rem 2rem;
-/*	padding-top: 0rem;*/
-/*	padding-bottom: 0rem;*/
-	font-size: 0.8rem;
-	line-height: 2rem;
-	height: 2rem;
-	color: #fff;
-	text-decoration: none;
-/*	border: none;*/
-	border-left:1px solid #666;
-	background-color: #555;
-	text-align: center;
-	border-bottom: 5px;
-/*
-	border-color: red;
-	box-shadow: inset 1 12px 12px 12px rgba(0,0,0,1);
-*/
-	
-}
-.tabs li.tab a.activetab{
+  min-height:100%;
+  color:#eee;
   background-color:#333;
-  color: #0cf;
-	border-bottom:1px solid #666;
-	border-right:1px solid #222;
-	border-left:1px solid #666;
-  /* 
-  to hide the border on top of the page 
-  for the active tab only
-  */
-  position:relative;
-  z-index:30;
+  padding:1rem;
 }
-
-/********************************
-        PAGES
-********************************/
-
-[data-role="page"]{
-  position:absolute; 
-  top: 3rem; 
-  color: #666;	
-  margin-top: -1px;
-  left: 100%;
-  right: -10px;
-  transition: left 0.5s linear,
-              right 0.5s linear;
-  z-index: 10;
-   /*** Items to trigger hardware acceleration ***/
-    -webkit-backface-visibility: hidden;
-   -moz-backface-visibility: hidden;
-   -ms-backface-visibility: hidden;
-   backface-visibility: hidden;
-   -webkit-perspective: 1000;
-   -moz-perspective: 1000;
-   -ms-perspective: 1000;
-   perspective: 1000;
-   -webkit-transform: translate3d(0, 0, 0);
-   -moz-transform: translate3d(0, 0, 0);
-   -ms-transform: translate3d(0, 0, 0);
-   transform: translate3d(0, 0, 0);
+[data-role=overlay]{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:10;
+  height:100%;
+  width:100%;
+  background-color: rgba(0,0,0,0.82);
 }
-[data-role=page].active{ 
-  left: 0;
-  right: 0;
-  z-index: 5;
-/*  background-color:#333;*/
-  border-top:1px solid #666;
+[data-role=modal]{
+  position:fixed;
+  top:20%;
+  left:10%;
+  width: 80%;
+  z-index:15;
+  max-height:80%;
+  padding:5vh;
+  border:1px solid #333;
+  min-height:10%;
+  color:#fff;
+  background-color:#666;
+  box-shadow:1px 1px 2px rgb(0,0,0);
 }
-[data-role=page].show{
-  display:block;
+/*************************************
+        Forms
+*************************************/
+.formBox{
+  padding: 0.6rem 0;
 }
-[data-role=page].hidden{
-  display:none;
+input, select{
+  line-height: 1.6rem;
+  font-size: 1.2rem;
+  padding:0 1rem;
+  max-width:90%;
 }
-
-object
-{
-	pointer-events: none;
+.narrow{
+  width:2rem;
 }
-/*****
-[data-role="header"]{
-	background-color:#111;
+.btn{
+  width:auto;
 }
-[data-role="header"] h1{
-  text-shadow: 1px 1px 1px #0cf;
-  padding:0.4rem;
-  color:#d4d4d4;
-  text-align:center;
-  letter-spacing:0.3rem;
-  word-spacing: 1rem;
-  font-variant:small-caps;
+.med{
+  width:10rem;
 }
-********/
-
-[data-role="content"]{
-  padding-top: 1.0rem;	
+.lg{
+  width:25rem;
 }
-[data-role="content"] p:last-child{
-	padding-bottom:4rem;
+.xlg{
+  width:40rem;
 }
-[data-rel="back"]{
-	float:left;
-	color:#fff;	
-	padding:0.3rem 1rem;
-  color: #666;;
-  font-size: 1rem;
-  line-height:2.0rem;
-  text-decoration:none;
-  display:none;
+/*************************************
+        Pages
+*************************************/
+[data-role=listview]{
+  list-style:none;
+}
+[data-role=listview] li{
+  font-size:1.2rem;
+  line-height:3rem;
+  height:3rem;
+  border:1px solid #000;
+  background-color:#ccc;
+  color:#333;
+  font-weight:300;
+  padding:0 1rem;
+  cursor:pointer;
 }
 
 /*Error dialog*/
@@ -207,37 +119,7 @@ object
 	box-shadow: 0 0 5px black;
 }
 
-/*MAP div*/
-.mapDiv
-{
-	border: 2px solid #009FD4;
-}
-.canvas
-{
-	width: 100%;
-	border: 1px;
-	border-color: #666;
-}
+/*************************************
+        Modals
+*************************************/
 
-/*Contacts*/
-#MyContacts
-{
-	list-style-type: none;
-}
-
-#MyContacts li
-{
-	height: 40px;
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-top: 5px;
-	vertical-align: middle;
-}
-#MyContacts li:after {
-    content: "";
-    display: block;
-    height: 1px;
-    width: screen.width;
-    margin: 10px;
-    background: #666;
-}

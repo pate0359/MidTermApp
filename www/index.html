@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link href='http://fonts.googleapis.com/css?family=Mate|Flamenco' rel='stylesheet' type='text/css'>
+		
+		<title>Cordova MidTerm App</title>
+    </head>
+    <body>
+		
+	<div class="wrapper">
+  	<section data-role="page">
+    <h2>Contacts</h2>
+    <p id="contactLoading">Syncing your contacts...</p>
+    <ul data-role="listview" id="MyContacts">
+    </ul>
+  	</section>
+		
+		 <div data-role="overlay">&nbsp;</div>
+  
+  <div data-role="modal">
+    <h3>Modal Window Title</h3>
+    <form>
+      <div class="formBox">
+        <select name="list" id="list" class="lg">
+          <option value="1">First Value</option>
+          <option value="2">Second Value</option>
+          <option value="3" >Third Value</option>
+          <option value="4" >Fourth Value</option>
+          <option value="5">Fifth Value</option>
+          <option value="6">Sixth Value</option>
+        </select>
+      </div>
+      <div class="formBox">
+        <input type="text" id="txt" name="txt" class="lg" placeholder="Enter a value here please"/>
+      </div>
+      <div class="formBox">
+        <input type="button" id="btnCancel" value="Cancel" class="btn"/>
+        <input type="button" id="btnSave" value="Save" class="btn"/>
+      </div>
+    </form>
+  </div>
+</div>
+		
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/contacts.js"></script>
+		<script type="text/javascript" src="js/location.js"></script>
+		<script type="text/javascript" src="js/hammer.min.js"></script>
+    </body>
+</html>
