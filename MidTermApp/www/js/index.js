@@ -1,55 +1,53 @@
+var contactList;
 var app = {
 	init: function () {
 
 		document.querySelector("[data-role=modal]").style.display = "none";
 		document.querySelector("[data-role=overlay]").style.display = "none";
 		document.getElementById("btnOk").addEventListener("click", app.Ok);
-		getContacts();
 
+		var jsonObject = localStorage.getItem('contactListPate0359');
+		contactList = JSON.parse(jsonObject);
+
+		if (!contactList) {
+			contactJS.getContacts();
+		} else {
+//			console.log(contactList);
+			document.querySelector("#contactLoading").innerHTML = "";
+			app.addContactListElement(contactList);
+		}
 	},
 	Ok: function (ev) {
 		document.querySelector("[data-role=modal]").style.display = "none";
 		document.querySelector("[data-role=overlay]").style.display = "none";
 	},
-	edit: function (ev) {
-
-		//alert(ev.innerHTML);
-		//		ev.stopPropagation();
-		//    var item = ev.target.getAttribute("data-ref");
-		//    var itemVal = ev.target.innerHTML;
-		//    document.getElementById("list").value = item;
-		//	  alert(item);
-		//	  alert(itemVal);
+	edit: function (contact) {
 
 		document.querySelector("[data-role=modal]").style.display = "block";
 		document.querySelector("[data-role=overlay]").style.display = "block";
-		document.querySelector(".contactName").innerHTML = ev.innerHTML;
-
-		/**************
-    Or the really long labourious difficult confusing annoying wasting time way....
-    for(var i=0; i< document.querySelectorAll("#list option").length; i++){
-      if(document.querySelectorAll("#list option")[i].value == item){
-        document.querySelectorAll("#list option")[i].setAttribute("selected", "selected");
-      }else{
-        document.querySelectorAll("#list option")[i].removeAttribute("selected");
-      }
-    }
-    ****************/
-
-		document.querySelector("[data-role=modal] h3").innerHTML = "Editing " + itemVal;
+		document.querySelector(".contactName").innerHTML = contact.name;
+		
+		document.querySelector("#phonenumbers").innerHTML="";
+		console.log(contact);
+		for(var i=0;i<contact.phonenumber.length;i++)
+		{
+			console.log(contact.phonenumber[i].type);
+			console.log(contact.phonenumber[i].value);
+			var li = document.createElement("li");
+			li.innerHTML = contact.phonenumber[i].type + " : " + contact.phonenumber[i].value;
+			document.querySelector("#phonenumbers").appendChild(li);
+		}
 	},
 	addContactListElement: function (contacts) {
 		document.querySelector("#MyContacts").innerHTML = "";
-		for (var i = 0; i < contacts.length; i++) {
 
-			if (contacts[i].displayName) {
-				var li = document.createElement("li");
-				li.innerHTML = contacts[i].displayName;
-				li.setAttribute("data-ref", i);
-				document.querySelector('#MyContacts').appendChild(li);
-
-				app.addHammerGestures(li);
-			}
+		for (var i = 0; i < contacts.length; i++) 
+		{
+			var li = document.createElement("li");
+			li.innerHTML = contacts[i].name;
+			li.setAttribute("id", contacts[i].id);
+			app.addHammerGestures(li);
+			document.querySelector('#MyContacts').appendChild(li);
 		}
 	},
 	addHammerGestures: function (element) {
@@ -71,11 +69,10 @@ var app = {
 
 		mc.on("singletap doubletap", function (ev) {
 
-			if (ev.type == "singletap") {
-				app.edit(ev.target);
-				//					alert(ev.type);
-				//					li.addEventListener("click", app.edit);
-
+			if (ev.type == "singletap") 
+			{
+				app.edit(contactList[ev.target.id]);
+				
 			} else if (ev.type == "doubletap") {
 
 				alert(ev.target.innerHTML);
