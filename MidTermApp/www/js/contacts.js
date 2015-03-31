@@ -26,19 +26,25 @@ var contactJS = {
 		}
 
 		var array=[];
-		//Add to local storage
-		for (var i = 0; i < contacts.length; i++) {
-			var name = contacts[i].displayName;
+		
+		//Display only 12 contacts
+		var contactLength=(contacts.length>=12)?12:contacts.length;
+		
+		for (var i = 0; i < contactLength; i++) {
+			if(contacts[i].displayName)
+			{
+				var name = contacts[i].displayName;
 			var number = contacts[i].phoneNumbers;
 			var contact = {
 				'id': i,
 				'name': name,
 				'phonenumber': number,
-				'latitude': 0,
-				'lognitude': 0
+				'latitude': null,
+				'lognitude': null
 			};
 
 			array.push(contact);
+			}			
 		}
 		// add contact to local storage
 		localStorage.setItem('contactListPate0359', JSON.stringify(array));

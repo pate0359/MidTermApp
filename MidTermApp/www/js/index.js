@@ -1,10 +1,19 @@
 var contactList;
 var app = {
 	init: function () {
-
+		
 		document.querySelector("[data-role=modal]").style.display = "none";
 		document.querySelector("[data-role=overlay]").style.display = "none";
+		
+		document.querySelector("#contactPage").style.display = "block";
+		document.querySelector("#mapPage").style.display = "none";
+		
 		document.getElementById("btnOk").addEventListener("click", app.Ok);
+		
+		document.getElementById("Done").style.display = "none";
+		document.getElementById("Done").addEventListener("click", app.init);
+		
+		//locationJS.getLocation();
 
 		var jsonObject = localStorage.getItem('contactListPate0359');
 		contactList = JSON.parse(jsonObject);
@@ -12,7 +21,6 @@ var app = {
 		if (!contactList) {
 			contactJS.getContacts();
 		} else {
-//			console.log(contactList);
 			document.querySelector("#contactLoading").innerHTML = "";
 			app.addContactListElement(contactList);
 		}
@@ -21,18 +29,18 @@ var app = {
 		document.querySelector("[data-role=modal]").style.display = "none";
 		document.querySelector("[data-role=overlay]").style.display = "none";
 	},
-	edit: function (contact) {
+	openDialog: function (contact) {
 
 		document.querySelector("[data-role=modal]").style.display = "block";
 		document.querySelector("[data-role=overlay]").style.display = "block";
 		document.querySelector(".contactName").innerHTML = contact.name;
 		
 		document.querySelector("#phonenumbers").innerHTML="";
-		console.log(contact);
+		//console.log(contact);
 		for(var i=0;i<contact.phonenumber.length;i++)
 		{
-			console.log(contact.phonenumber[i].type);
-			console.log(contact.phonenumber[i].value);
+			//console.log(contact.phonenumber[i].type);
+			//console.log(contact.phonenumber[i].value);
 			var li = document.createElement("li");
 			li.innerHTML = contact.phonenumber[i].type + " : " + contact.phonenumber[i].value;
 			document.querySelector("#phonenumbers").appendChild(li);
@@ -49,6 +57,25 @@ var app = {
 			app.addHammerGestures(li);
 			document.querySelector('#MyContacts').appendChild(li);
 		}
+	},
+	openMapPage: function (contact) {
+				
+		locationJS.getLocation(contact);
+		
+    	app.navigate( location.href, true );
+
+		document.querySelector("#contactPage").style.display = "none";
+		document.querySelector("#mapPage").style.display = "block";
+		
+	},
+	navigate: function (url, addToHistory) {
+				
+		//call ajax function to load the proper content for our url
+		  //potentially use ajax to load the url itself, if it were an html page
+		  //add handler for the ajax response
+		  if( addToHistory ){
+			history.pushState({"data":123}, null, url );  //add the url to the history array
+		  }
 	},
 	addHammerGestures: function (element) {
 		// Add Hammer double tap event
@@ -71,15 +98,29 @@ var app = {
 
 			if (ev.type == "singletap") 
 			{
-				app.edit(contactList[ev.target.id]);
+				app.openDialog(contactList[ev.target.id]);
 				
 			} else if (ev.type == "doubletap") {
 
-				alert(ev.target.innerHTML);
+				//alert(ev.target.innerHTML);
+				app.openMapPage(contactList[ev.target.id]);
 			}
 		});
 	}
 }
 
-//document.addEventListener("DOMContentLoaded", app.init);
+//History API Pop
+window.addEventListener("popstate", function( ev ){
+  //this will handle the back button and forward button if clicked.  
+//  console.log( ev.state );
+//  console.log( location.href );
+//  navigate( location.href, false );
+//	history.back( );
+//	history.go( -1);
+	app.init();
+  //don't add this call to the history... it is already there.
+});
+
+//DOMContent Loaded - Device ready
+document.addEventListener("DOMContentLoaded", app.init);
 document.addEventListener("deviceready", app.init);

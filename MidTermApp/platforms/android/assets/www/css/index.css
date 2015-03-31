@@ -15,7 +15,7 @@ h2{
 h1,h2,h3,h4
 {
 	text-align: center;
-	margin-bottom: 10px;
+/*	margin-bottom: 10px;*/
 }
 
 p{
@@ -24,7 +24,15 @@ p{
 }
 .wrapper{
   width:100%;
-  height:100%;
+/*	height: 300px;*/
+	min-height:100%;
+/*  height:100%;*/
+/*	position:relative;*/
+}
+
+html
+{
+	min-height:100%;
 }
 /*************************************
         Layout
@@ -38,7 +46,9 @@ p{
   min-height:100%;
   color:#eee;
   background-color:#333;
-  padding:1rem;
+  padding-left:1rem;
+	padding-right:1rem;
+	padding-bottom:1rem;
 }
 [data-role=overlay]{
   position:fixed;
@@ -128,4 +138,83 @@ input, select{
 /*************************************
         Modals
 *************************************/
+#mapPage {
+    width: 100%;
+	height:400px;
+	margin-top: 10px;
+/*	height: 400px;*/
+/*	height: 100%;*/
+/*	background-color: red;*/
+}
+
+#map_canvas
+{
+	width: 100%;
+	height: 400px;
+/*
+	height:100%;
+	margin-left: 10%;
+	padding-left: 10%;
+	padding-top: 10%;
+*/
+/*	background-color: yellow;*/
+}
+
+.titleMap
+{
+	text-align: center;
+}
+
+/*
+@-webkit-keyframes loader {
+	0% { left: 0%; }
+	100% { left: 100%; }
+}
+@keyframes loader {
+	0% { left: 0%; }
+	100% { left: 100%; }
+}
+*/
+
+/*
+#contactPage
+{
+	left: 0;
+}
+*/
+/*
+.contactPageTransitionLeft {
+	position: absolute;
+	left: -100%;
+	-webkit-animation: loader 1s cubic-bezier(0.030, 0.615, 0.995, 0.415) ;
+	animation: loader 1s cubic-bezier(0.030, 0.615, 0.995, 0.415) ;
+}
+.contactPageTransitionRight {
+	position: absolute;
+	left: 0%;
+	-webkit-animation: loader 1s cubic-bezier(0.030, 0.615, 0.995, 0.415);
+	animation: loader 1s cubic-bezier(0.030, 0.615, 0.995, 0.415);
+}
+*/
+
+/*
+#mapPage
+{
+	left: 100%;
+}
+*/
+/*
+.mapPageTransitionLeft {
+	position: absolute;
+	left: 0;
+	-webkit-animation: loader 1s cubic-bezier(0.030, 0.615, 0.995, 0.415) ;
+	animation: loader 1s cubic-bezier(0.030, 0.615, 0.995, 0.415) ;
+}
+.mapPageTransitionRight {
+	position: absolute;
+	left: 100%;
+	-webkit-animation: loader 1s cubic-bezier(0.030, 0.615, 0.995, 0.415);
+	animation: loader 1s cubic-bezier(0.030, 0.615, 0.995, 0.415);
+}
+*/
 
