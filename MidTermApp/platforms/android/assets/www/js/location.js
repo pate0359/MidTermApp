@@ -49,6 +49,7 @@ var locationJS = {
 			var map = new google.maps.Map(document.getElementById('map_canvas'),
 				mapOptions);
 			locationJS.placeMarker(center, map);
+			map.panTo(center);
 
 		} else {
 

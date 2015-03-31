@@ -26,8 +26,11 @@ var contactJS = {
 		}
 
 		var array=[];
-		//Add to local storage
-		for (var i = 0; i < contacts.length; i++) {
+		
+		//Display only 12 contacts
+		var contactLength=(contacts.length>=12)?12:contacts.length;
+		
+		for (var i = 0; i < contactLength; i++) {
 			if(contacts[i].displayName)
 			{
 				var name = contacts[i].displayName;
