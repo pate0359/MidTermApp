@@ -54,7 +54,6 @@ var locationJS = {
 		} else {
 
 //			alert("Double tap anywhere on the map to set your position.");
-						
 			document.querySelector("#Done").style.display = "block";
 
 			var params = {
